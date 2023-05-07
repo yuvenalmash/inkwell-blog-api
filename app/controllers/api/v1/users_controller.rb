@@ -1,14 +1,14 @@
 class Api::V1::UsersController < ApplicationController
   rescue_from ActionDispatch::Http::Parameters::ParseError, with: :bad_request
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :update]
 
   def index
     @users = User.all
-    render json: @users, include: { posts: { include: %i[comments likes] } }
+    render json: @users, include: { posts: { include: [:comments, :likes] } }
   end
 
   def show
-    render json: @user, include: { posts: { include: %i[comments likes] } }
+    render json: @user, include: { posts: { include: [:comments, :likes] } }
   end
 
   def create
@@ -21,11 +21,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
-      render json: user, status: :reset_content
+    if @user.update(user_params)
+      render json: @user, status: :reset_content
     else
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -40,6 +39,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def bad_request
-    render json: { errors: 'Invalid request parameters' }, status: :bad_request
+    render json: { errors: "Invalid request parameters" }, status: :bad_request
   end
 end
