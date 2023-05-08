@@ -19,16 +19,24 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(comment_params)
-      render json: @comment, status: :reset_content
+    if @user == @comment.user
+      if @comment.update(comment_params)
+        render json: @comment, status: :reset_content
+      else
+        render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
+      end
     else
-      render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: 'You are not authorized to perform this action' }, status: :unauthorized
     end
   end
 
   def destroy
-    @comment.destroy
-    render json: @comment, status: :no_content
+    if @user == @comment.user
+      @comment.destroy
+      render json: @comment, status: :no_content
+    else
+      render json: { errors: 'You are not authorized to perform this action' }, status: :unauthorized
+    end
   end
 
   private
@@ -38,7 +46,7 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def set_post
-    @post = @user.posts.find(params[:post_id])
+    @post = Post.find(params[:post_id])
   end
 
   def set_comment

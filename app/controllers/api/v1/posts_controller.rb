@@ -1,14 +1,14 @@
 class Api::V1::PostsController < ApplicationController
   rescue_from ActionDispatch::Http::Parameters::ParseError, with: :bad_request
   before_action :set_post, only: %i[show update destroy]
+  before_action :set_user, only: %i[index create update destroy]
 
   def index
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @posts = @user.posts
-    else
-      @posts = Post.all
-    end
+    @posts = if params[:user_id]
+               @user.posts
+             else
+               Post.all
+             end
     render json: @posts
   end
 
@@ -23,6 +23,7 @@ class Api::V1::PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
+    post.user = @user
     if post.save
       render json: post, status: :created
     else
@@ -31,26 +32,38 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      render json: @post, status: :reset_content
+    if @user == @post.user
+      if @post.update(post_params)
+        render json: @post, status: :reset_content
+      else
+        render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
+      end
     else
-      render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: 'You are not authorized to perform this action' }, status: :unauthorized
     end
   end
 
   def destroy
-    @post.destroy
-    render json: @post, status: :no_content
+    if @user == @post.user
+      @post.destroy
+      render json: @post, status: :no_content
+    else
+      render json: { errors: 'You are not authorized to perform this action' }, status: :unauthorized
+    end
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def set_post
     @post = Post.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :content, :slug)
+    params.require(:post).permit(:title, :content, :slug)
   end
 
   def bad_request
