@@ -3,7 +3,7 @@ class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: %i[show update]
 
   def index
-    @users = User.all
+    @users = User.includes(posts: %i[comments likes]).all
     render json: @users, include: { posts: { include: %i[comments likes] } }
   end
 

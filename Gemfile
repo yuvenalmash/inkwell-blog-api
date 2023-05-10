@@ -41,7 +41,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   # Use bullet to detect N+1 queries [https://github.com/flyerhzm/bullet]
-  gem "bullet"
+  gem 'bullet'
 end
 
 group :development do

@@ -4,7 +4,7 @@ class Api::V1::PostsController < ApplicationController
   before_action :set_user, only: %i[index create update destroy]
 
   def index
-    @posts = if params[:user_id]
+    @posts = if @user
                @user.posts
              else
                Post.all
@@ -55,11 +55,13 @@ class Api::V1::PostsController < ApplicationController
   private
 
   def set_user
+    return unless params[:user_id]
+
     @user = User.find(params[:user_id])
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.includes(comments: :user, likes: :user, user: {}).find(params[:id])
   end
 
   def post_params

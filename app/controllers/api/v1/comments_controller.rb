@@ -4,7 +4,7 @@ class Api::V1::CommentsController < ApplicationController
   before_action :set_comment, only: %i[update destroy]
 
   def index
-    @comments = @post.comments
+    @comments = @post.comments.includes(:user).all
     render json: @comments, include: { user: { only: %i[username avatar] } }
   end
 

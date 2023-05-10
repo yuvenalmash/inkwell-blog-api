@@ -6,7 +6,7 @@ class Api::V1::LikesController < ApplicationController
   before_action :set_like, only: %i[destroy]
 
   def index
-    @likes = @likeable.likes
+    @likes = @likeable.likes.includes(:user).all
     render json: @likes, include: { user: { only: %i[username avatar] } }
   end
 
