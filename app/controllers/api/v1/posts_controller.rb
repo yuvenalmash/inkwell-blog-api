@@ -1,6 +1,6 @@
 class Api::V1::PostsController < ApplicationController
   rescue_from ActionDispatch::Http::Parameters::ParseError, with: :bad_request
-  before_action :set_post, only: %i[show update destroy]
+  before_action :set_post, only: %i[show destroy]
   before_action :set_user, only: %i[index create update destroy]
 
   def index
@@ -32,6 +32,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
     if @user == @post.user
       if @post.update(post_params)
         render json: @post, status: :reset_content
