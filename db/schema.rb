@@ -72,8 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_160620) do
 
   create_table "users", force: :cascade do |t|
     t.string "username", limit: 20, null: false
-    t.string "email", limit: 50, null: false
-    t.string "password_digest", null: false
     t.string "avatar", default: "", null: false
     t.string "bio", default: "", null: false
     t.integer "posts_count", default: 0, null: false
