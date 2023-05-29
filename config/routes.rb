@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
   namespace :api do
     namespace :v1 do
+      # Devise routes
+      devise_for :users,
+                 path: 'users',
+                 path_names: {
+                   sign_in: 'sign_in',
+                   sign_out: 'sign_out',
+                   registration: 'sign_up'
+                 },
+                 controllers: {
+                   sessions: 'api/v1/users/sessions',
+                   registrations: 'api/v1/users/registrations'
+                 }
+
       resources :users do
         resources :posts, only: [:index, :show, :create, :update, :destroy] do
           resources :comments, only: [:index, :create, :update, :destroy] do
