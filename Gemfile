@@ -34,7 +34,7 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem "rack-cors"
+gem 'rack-cors'
 
 # Use Devise for authentication
 gem 'devise'
@@ -52,6 +52,9 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'faker', '~> 2.18.0'
   gem 'rspec-rails', '~> 5.0.0'
+
+  # Use dotenv to load environment variables from .env into ENV in development
+  gem 'dotenv-rails'
 end
 
 group :development do
