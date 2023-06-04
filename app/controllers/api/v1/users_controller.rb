@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   rescue_from ActionDispatch::Http::Parameters::ParseError, with: :bad_request
   before_action :set_user, only: %i[show update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @users = User.includes(posts: %i[comments likes]).all
@@ -34,7 +35,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username :bio, :avatar)
+    params.require(:user).permit(:username, :bio, :avatar)
   end
 
   def bad_request

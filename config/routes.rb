@@ -13,7 +13,7 @@ Rails.application.routes.draw do
           registrations: 'api/v1/users/registrations'
         }
 
-      resources :users, only: [:index, :show] do
+      resources :users, only: [:index, :show, :update] do
         resources :posts, only: [:index, :show, :create, :update, :destroy] do
           resources :comments, only: [:index, :create, :update, :destroy] do
             resources :likes, only: [:index, :create, :destroy]
@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   end
 
   post '/api/v1/signup', to: 'api/v1/users/registrations#create'
+  post '/api/v1/login', to: 'api/v1/users/sessions#create'
+  delete '/api/v1/logout', to: 'api/v1/users/sessions#destroy'
 end

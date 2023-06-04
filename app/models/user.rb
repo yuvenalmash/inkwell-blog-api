@@ -14,4 +14,10 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
+
+  def generate_jwt
+    JWT.encode({ id: id,
+                 exp: 1.day.from_now.to_i },
+               Rails.application.credentials.secret_key_base)
+  end
 end
