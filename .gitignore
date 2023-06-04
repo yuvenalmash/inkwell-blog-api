@@ -30,3 +30,5 @@
 
 # Ignore Gemfile.lock
 /Gemfile.lock
+
+/.env
