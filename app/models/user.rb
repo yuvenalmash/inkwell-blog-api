@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
+  validates :email, presence: true, uniqueness: true, length: { maximum: 50 }
+  validates :encrypted_password, presence: true
 
   def generate_jwt
     JWT.encode({ id: id,
