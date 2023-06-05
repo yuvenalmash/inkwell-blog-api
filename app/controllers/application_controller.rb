@@ -14,16 +14,12 @@ class ApplicationController < ActionController::API
     end
 
     user = User.find(decoded_token[0]['id'])
-    if user.id == params[:id].to_i
-      @current_user = user
-    else
-      return render json: { error: 'Unauthorized access' }, status: :unauthorized
-    end
+    return render json: { error: 'Unauthorized access' }, status: :unauthorized unless user.id == params[:id].to_i
+
+    @current_user = user
   end
 
-  def current_user
-    @current_user
-  end
+  attr_reader :current_user
 
   def bad_request
     render json: { errors: 'Invalid request parameters' }, status: :bad_request
