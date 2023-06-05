@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
       expect(FactoryBot.build(:user, email: nil)).to_not be_valid
     end
     it 'is not valid without a password' do
-      expect(FactoryBot.build(:user, password_digest: nil)).to_not be_valid
+      expect(FactoryBot.build(:user, encrypted_password: nil)).to_not be_valid
     end
     it 'is not valid with a username longer than 20 characters' do
       expect(FactoryBot.build(:user, username: 'a' * 21)).to_not be_valid
