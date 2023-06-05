@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   rescue_from ActionDispatch::Http::Parameters::ParseError, with: :bad_request
   before_action :set_user, only: %i[show update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @users = User.includes(posts: %i[comments likes]).all
@@ -9,15 +10,6 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     render json: @user, include: { posts: { include: %i[comments likes] } }
-  end
-
-  def create
-    user = User.new(user_params)
-    if user.save
-      render json: user, status: :created
-    else
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
-    end
   end
 
   def update
@@ -43,7 +35,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password_digest, :bio, :avatar)
+    params.require(:user).permit(:username, :bio, :avatar)
   end
 
   def bad_request
