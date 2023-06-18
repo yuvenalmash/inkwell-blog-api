@@ -52,8 +52,8 @@ paths:
                   properties:
                     content:
                       type: string
-                      example: Minus sapiente iure. Omnis dolor mollitia. Adipisci
-                        neque quos.
+                      example: Amet animi asperiores. Vel porro nobis. Quam rerum
+                        odio.
               required:
               - comment
   "/api/v1/users/{user_id}/posts/{post_id}/comments/{id}":
@@ -91,8 +91,7 @@ paths:
                   properties:
                     content:
                       type: string
-                      example: Porro nihil aperiam. Reprehenderit commodi aliquid.
-                        Reprehenderit exercitationem necessitatibus.
+                      example: Id ut ut. Est ea et. Quia sapiente consectetur.
               required:
               - comment
     delete:
@@ -212,14 +211,14 @@ paths:
                   properties:
                     title:
                       type: string
-                      example: Est autem et est.
+                      example: Iusto corrupti beatae et.
                     content:
                       type: string
-                      example: In sit voluptas. Voluptatibus voluptatem minima. Optio
-                        ex quae.
+                      example: Voluptates numquam eaque. Perferendis quasi ducimus.
+                        Laborum pariatur et.
                     slug:
                       type: string
-                      example: Vero adipisci unde ut.
+                      example: Quo perferendis nesciunt et.
               required:
               - post
     get:
@@ -283,18 +282,18 @@ paths:
                   properties:
                     title:
                       type: string
-                      example: Voluptas in alias aut.
+                      example: Neque nostrum perferendis reprehenderit.
                     content:
                       type: string
-                      example: Nihil excepturi nobis. Ducimus eos ut. Iusto illum
-                        nobis.
+                      example: Quos nemo incidunt. Necessitatibus nesciunt non. Voluptates
+                        deleniti est.
                     slug:
                       type: string
-                      example: Et voluptatibus aliquam qui.
+                      example: Voluptatum aperiam amet quidem.
               required:
               - post
     delete:
-      summary: delete post
+      summary: destroy post
       tags:
       - Post
       parameters:
@@ -331,10 +330,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: loria.pagac
+                      example: estell.brakus
                     email:
                       type: string
-                      example: kathleen_ernser@lindgren.net
+                      example: josefa_stroman@ondricka.name
                     password:
                       type: string
                       example: '123456'
@@ -363,7 +362,7 @@ paths:
                   properties:
                     email:
                       type: string
-                      example: dudley_towne@schamberger-rosenbaum.com
+                      example: trey.bauch@ruecker-wintheiser.net
                     password:
                       type: string
                       example: '123456'
@@ -415,10 +414,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: quentin
+                      example: shantell.shanahan
                     email:
                       type: string
-                      example: antonio@feeney.co
+                      example: doloris_ankunding@mayer-stark.org
                     password:
                       type: string
                       example: '123456'
@@ -451,10 +450,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: alvina
+                      example: cristine_robel
                     email:
                       type: string
-                      example: kendal@johns.io
+                      example: carole@haag.name
                     password:
                       type: string
                       example: '123456'
