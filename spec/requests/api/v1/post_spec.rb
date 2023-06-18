@@ -34,7 +34,6 @@ RSpec.describe 'api/v1/posts', type: :request do
       }
       response(201, 'successful') do
         let(:user_id) { @user.id }
-        let(:post) {}
         run_test!
       end
     end
