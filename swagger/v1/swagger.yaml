@@ -4,6 +4,181 @@ info:
   title: Inkwell Blog API
   version: v1
 paths:
+  "/api/v1/users/{user_id}/posts/{post_id}/comments":
+    get:
+      summary: list comments
+      tags:
+      - Comment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create comment
+      tags:
+      - Comment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                      example: Minus sapiente iure. Omnis dolor mollitia. Adipisci
+                        neque quos.
+              required:
+              - comment
+  "/api/v1/users/{user_id}/posts/{post_id}/comments/{id}":
+    put:
+      summary: update comment
+      tags:
+      - Comment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '205':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                      example: Porro nihil aperiam. Reprehenderit commodi aliquid.
+                        Reprehenderit exercitationem necessitatibus.
+              required:
+              - comment
+    delete:
+      summary: delete comment
+      tags:
+      - Comment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{post_id}/likes":
+    get:
+      summary: list likes
+      tags:
+      - Like
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create like
+      tags:
+      - Like
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{post_id}/likes/{id}":
+    delete:
+      summary: destroy like
+      tags:
+      - Like
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: successful
   "/api/v1/posts":
     get:
       summary: list posts
@@ -37,14 +212,14 @@ paths:
                   properties:
                     title:
                       type: string
-                      example: Facere itaque ipsa sunt.
+                      example: Est autem et est.
                     content:
                       type: string
-                      example: Qui officiis officia. Laboriosam quae quaerat. Consequatur
-                        officiis a.
+                      example: In sit voluptas. Voluptatibus voluptatem minima. Optio
+                        ex quae.
                     slug:
                       type: string
-                      example: Illum non est vel.
+                      example: Vero adipisci unde ut.
               required:
               - post
     get:
@@ -108,14 +283,14 @@ paths:
                   properties:
                     title:
                       type: string
-                      example: Quis qui ipsa et.
+                      example: Voluptas in alias aut.
                     content:
                       type: string
-                      example: Ullam ipsa sit. Voluptatum id aliquid. Necessitatibus
-                        eveniet doloremque.
+                      example: Nihil excepturi nobis. Ducimus eos ut. Iusto illum
+                        nobis.
                     slug:
                       type: string
-                      example: Neque eius recusandae impedit.
+                      example: Et voluptatibus aliquam qui.
               required:
               - post
     delete:
@@ -156,10 +331,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: jospeh
+                      example: loria.pagac
                     email:
                       type: string
-                      example: gillian@medhurst.biz
+                      example: kathleen_ernser@lindgren.net
                     password:
                       type: string
                       example: '123456'
@@ -188,7 +363,7 @@ paths:
                   properties:
                     email:
                       type: string
-                      example: ha.willms@friesen.name
+                      example: dudley_towne@schamberger-rosenbaum.com
                     password:
                       type: string
                       example: '123456'
@@ -240,10 +415,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: marc
+                      example: quentin
                     email:
                       type: string
-                      example: gail.stanton@carter.com
+                      example: antonio@feeney.co
                     password:
                       type: string
                       example: '123456'
@@ -276,10 +451,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: burl.tillman
+                      example: alvina
                     email:
                       type: string
-                      example: josefine_shields@gerlach.name
+                      example: kendal@johns.io
                     password:
                       type: string
                       example: '123456'
