@@ -31,7 +31,7 @@ RSpec.configure do |config|
             }
           }
         }
-      ]
+      ],
     }
   }
 

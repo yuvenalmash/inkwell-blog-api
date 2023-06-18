@@ -1,0 +1,258 @@
+---
+openapi: 3.0.1
+info:
+  title: Inkwell Blog API
+  version: v1
+paths:
+  "/api/v1/posts":
+    get:
+      summary: list posts
+      tags:
+      - Post
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts":
+    post:
+      summary: create post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: Expedita ut et sapiente.
+                    content:
+                      type: string
+                      example: Recusandae voluptas quasi. Sit maiores rerum. Placeat
+                        cupiditate quos.
+                    slug:
+                      type: string
+                      example: Eos ut asperiores eius.
+              required:
+              - post
+    get:
+      summary: list posts
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{id}":
+    get:
+      summary: show post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '205':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: Consequatur ducimus sunt et.
+                    content:
+                      type: string
+                      example: At nihil ut. Atque molestiae id. Repellat enim voluptate.
+                    slug:
+                      type: string
+                      example: Deserunt fugiat aut incidunt.
+              required:
+              - post
+    delete:
+      summary: delete post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: successful
+  "/api/v1/signup":
+    post:
+      summary: create user
+      tags:
+      - User
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      example: pilar
+                    email:
+                      type: string
+                      example: allegra.hansen@hane-mann.name
+                    password:
+                      type: string
+                      example: '123456'
+                    password_confirmation:
+                      type: string
+                      example: '123456'
+              required:
+              - user
+  "/api/v1/login":
+    post:
+      summary: login user
+      tags:
+      - User
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      example: isaias@hilpert.com
+                    password:
+                      type: string
+                      example: '123456'
+              required:
+              - user
+  "/api/v1/users":
+    get:
+      summary: list users
+      tags:
+      - User
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{id}":
+    get:
+      summary: show user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '205':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      example: lauryn_schuster
+                    email:
+                      type: string
+                      example: rochell.haley@watsica-ankunding.co
+                    password:
+                      type: string
+                      example: '123456'
+                    password_confirmation:
+                      type: string
+                      example: '123456'
+              required:
+              - user
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000/
