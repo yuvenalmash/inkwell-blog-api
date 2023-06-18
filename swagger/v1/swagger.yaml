@@ -52,8 +52,7 @@ paths:
                   properties:
                     content:
                       type: string
-                      example: Amet animi asperiores. Vel porro nobis. Quam rerum
-                        odio.
+                      example: In harum est. Quo qui explicabo. Nihil qui qui.
               required:
               - comment
   "/api/v1/users/{user_id}/posts/{post_id}/comments/{id}":
@@ -91,7 +90,7 @@ paths:
                   properties:
                     content:
                       type: string
-                      example: Id ut ut. Est ea et. Quia sapiente consectetur.
+                      example: Sunt et in. Qui minus fugiat. Corporis eos alias.
               required:
               - comment
     delete:
@@ -211,14 +210,14 @@ paths:
                   properties:
                     title:
                       type: string
-                      example: Iusto corrupti beatae et.
+                      example: Earum minus dolor architecto.
                     content:
                       type: string
-                      example: Voluptates numquam eaque. Perferendis quasi ducimus.
-                        Laborum pariatur et.
+                      example: Quia quam sit. Repudiandae voluptas voluptas. Non et
+                        ex.
                     slug:
                       type: string
-                      example: Quo perferendis nesciunt et.
+                      example: Earum ullam non voluptatem.
               required:
               - post
     get:
@@ -282,14 +281,14 @@ paths:
                   properties:
                     title:
                       type: string
-                      example: Neque nostrum perferendis reprehenderit.
+                      example: Dolore et et ad.
                     content:
                       type: string
-                      example: Quos nemo incidunt. Necessitatibus nesciunt non. Voluptates
-                        deleniti est.
+                      example: Officiis eveniet voluptas. Optio quidem est. Fugiat
+                        tenetur voluptatibus.
                     slug:
                       type: string
-                      example: Voluptatum aperiam amet quidem.
+                      example: Commodi rerum adipisci sit.
               required:
               - post
     delete:
@@ -330,10 +329,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: estell.brakus
+                      example: octavio
                     email:
                       type: string
-                      example: josefa_stroman@ondricka.name
+                      example: hugh.muller@powlowski.net
                     password:
                       type: string
                       example: '123456'
@@ -362,7 +361,7 @@ paths:
                   properties:
                     email:
                       type: string
-                      example: trey.bauch@ruecker-wintheiser.net
+                      example: rocky@bogan.co
                     password:
                       type: string
                       example: '123456'
@@ -414,10 +413,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: shantell.shanahan
+                      example: keeley
                     email:
                       type: string
-                      example: doloris_ankunding@mayer-stark.org
+                      example: shira@raynor.net
                     password:
                       type: string
                       example: '123456'
@@ -450,10 +449,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: cristine_robel
+                      example: veola_metz
                     email:
                       type: string
-                      example: carole@haag.name
+                      example: rosalba.hilpert@macejkovic.info
                     password:
                       type: string
                       example: '123456'
