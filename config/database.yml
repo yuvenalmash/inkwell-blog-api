@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: inkwell_blog_api_production
-  username: inkwell_blog_api
-  password: <%= ENV["INKWELL_BLOG_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  # database: inkwell_blog_api_production
+  # username: inkwell_blog_api
+  # password: <%= ENV["INKWELL_BLOG_API_DATABASE_PASSWORD"] %>
