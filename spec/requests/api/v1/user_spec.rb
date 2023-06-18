@@ -92,5 +92,40 @@ RSpec.describe 'api/v1/users', type: :request do
         run_test!
       end
     end
+
+    put('update user') do
+      tags 'User'
+      consumes 'application/json'
+      parameter name: :id, in: :path, type: :string
+      parameter name: :user, in: :body, schema: {
+        type: :object,
+        properties: {
+          user: { type: :object, properties: {
+            username: { type: :string, example: Faker::Internet.username },
+            email: { type: :string, example: Faker::Internet.email },
+            password: { type: :string, example: '123456' },
+            password_confirmation: { type: :string, example: '123456' }
+          }}
+        },
+        required: %w[user]
+      }
+
+      response(205, 'successful') do
+        user = FactoryBot.create(:user)
+        let(:id) { user.id }
+        let(:user) { { user: { username: user.username, email: user.email } } }
+        run_test!
+      end
+    end
+
+    delete('delete user') do
+      tags 'User'
+      consumes 'application/json'
+      parameter name: :id, in: :path, type: :string
+      response(204, 'successful') do
+        let(:id) { FactoryBot.create(:user).id }
+        run_test!
+      end
+    end
   end
 end

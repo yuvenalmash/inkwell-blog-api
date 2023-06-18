@@ -37,14 +37,14 @@ paths:
                   properties:
                     title:
                       type: string
-                      example: Expedita ut et sapiente.
+                      example: Facere itaque ipsa sunt.
                     content:
                       type: string
-                      example: Recusandae voluptas quasi. Sit maiores rerum. Placeat
-                        cupiditate quos.
+                      example: Qui officiis officia. Laboriosam quae quaerat. Consequatur
+                        officiis a.
                     slug:
                       type: string
-                      example: Eos ut asperiores eius.
+                      example: Illum non est vel.
               required:
               - post
     get:
@@ -108,13 +108,14 @@ paths:
                   properties:
                     title:
                       type: string
-                      example: Consequatur ducimus sunt et.
+                      example: Quis qui ipsa et.
                     content:
                       type: string
-                      example: At nihil ut. Atque molestiae id. Repellat enim voluptate.
+                      example: Ullam ipsa sit. Voluptatum id aliquid. Necessitatibus
+                        eveniet doloremque.
                     slug:
                       type: string
-                      example: Deserunt fugiat aut incidunt.
+                      example: Neque eius recusandae impedit.
               required:
               - post
     delete:
@@ -155,10 +156,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: pilar
+                      example: jospeh
                     email:
                       type: string
-                      example: allegra.hansen@hane-mann.name
+                      example: gillian@medhurst.biz
                     password:
                       type: string
                       example: '123456'
@@ -187,7 +188,7 @@ paths:
                   properties:
                     email:
                       type: string
-                      example: isaias@hilpert.com
+                      example: ha.willms@friesen.name
                     password:
                       type: string
                       example: '123456'
@@ -239,10 +240,10 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: lauryn_schuster
+                      example: marc
                     email:
                       type: string
-                      example: rochell.haley@watsica-ankunding.co
+                      example: gail.stanton@carter.com
                     password:
                       type: string
                       example: '123456'
@@ -251,6 +252,55 @@ paths:
                       example: '123456'
               required:
               - user
+    put:
+      summary: update user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '205':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      example: burl.tillman
+                    email:
+                      type: string
+                      example: josefine_shields@gerlach.name
+                    password:
+                      type: string
+                      example: '123456'
+                    password_confirmation:
+                      type: string
+                      example: '123456'
+              required:
+              - user
+    delete:
+      summary: delete user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: successful
 servers:
 - url: http://{defaultHost}
   variables:
