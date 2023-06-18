@@ -6,9 +6,7 @@ class ApplicationController < ActionController::API
     begin
       decoded_token = JWT.decode(token, Rails.application.credentials.secret_key_base, true, algorithm: 'HS256')
       puts 'decoded_token: ', decoded_token
-      if decoded_token[0]['exp'] < Time.now.to_i
-        return render json: { error: 'Unauthorized access' }, status: :unauthorized
-      end
+      return render json: { error: 'Unauthorized access' }, status: :unauthorized if decoded_token[0]['exp'] < Time.now.to_i
     rescue JWT::DecodeError
       return render json: { error: 'Unauthorized access' }, status: :unauthorized
     end

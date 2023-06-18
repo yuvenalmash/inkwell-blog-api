@@ -1,0 +1,481 @@
+---
+openapi: 3.0.1
+info:
+  title: Inkwell Blog API
+  version: v1
+paths:
+  "/api/v1/users/{user_id}/posts/{post_id}/comments":
+    get:
+      summary: list comments
+      tags:
+      - Comment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create comment
+      tags:
+      - Comment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                      example: In harum est. Quo qui explicabo. Nihil qui qui.
+              required:
+              - comment
+  "/api/v1/users/{user_id}/posts/{post_id}/comments/{id}":
+    put:
+      summary: update comment
+      tags:
+      - Comment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '205':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                      example: Sunt et in. Qui minus fugiat. Corporis eos alias.
+              required:
+              - comment
+    delete:
+      summary: delete comment
+      tags:
+      - Comment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{post_id}/likes":
+    get:
+      summary: list likes
+      tags:
+      - Like
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create like
+      tags:
+      - Like
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{post_id}/likes/{id}":
+    delete:
+      summary: destroy like
+      tags:
+      - Like
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: successful
+  "/api/v1/posts":
+    get:
+      summary: list posts
+      tags:
+      - Post
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts":
+    post:
+      summary: create post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: Earum minus dolor architecto.
+                    content:
+                      type: string
+                      example: Quia quam sit. Repudiandae voluptas voluptas. Non et
+                        ex.
+                    slug:
+                      type: string
+                      example: Earum ullam non voluptatem.
+              required:
+              - post
+    get:
+      summary: list posts
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{id}":
+    get:
+      summary: show post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '205':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: Dolore et et ad.
+                    content:
+                      type: string
+                      example: Officiis eveniet voluptas. Optio quidem est. Fugiat
+                        tenetur voluptatibus.
+                    slug:
+                      type: string
+                      example: Commodi rerum adipisci sit.
+              required:
+              - post
+    delete:
+      summary: destroy post
+      tags:
+      - Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: successful
+  "/api/v1/signup":
+    post:
+      summary: create user
+      tags:
+      - User
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      example: octavio
+                    email:
+                      type: string
+                      example: hugh.muller@powlowski.net
+                    password:
+                      type: string
+                      example: '123456'
+                    password_confirmation:
+                      type: string
+                      example: '123456'
+              required:
+              - user
+  "/api/v1/login":
+    post:
+      summary: login user
+      tags:
+      - User
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      example: rocky@bogan.co
+                    password:
+                      type: string
+                      example: '123456'
+              required:
+              - user
+  "/api/v1/users":
+    get:
+      summary: list users
+      tags:
+      - User
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{id}":
+    get:
+      summary: show user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '205':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      example: keeley
+                    email:
+                      type: string
+                      example: shira@raynor.net
+                    password:
+                      type: string
+                      example: '123456'
+                    password_confirmation:
+                      type: string
+                      example: '123456'
+              required:
+              - user
+    put:
+      summary: update user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '205':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      example: veola_metz
+                    email:
+                      type: string
+                      example: rosalba.hilpert@macejkovic.info
+                    password:
+                      type: string
+                      example: '123456'
+                    password_confirmation:
+                      type: string
+                      example: '123456'
+              required:
+              - user
+    delete:
+      summary: delete user
+      tags:
+      - User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000/

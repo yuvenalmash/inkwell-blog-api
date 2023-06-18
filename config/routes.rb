@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   namespace :api do
     namespace :v1 do
       devise_for :users,
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
           registrations: 'api/v1/users/registrations'
         }
 
-      resources :users, only: [:index, :show, :update] do
+      resources :users, only: [:index, :show, :update, :destroy] do
         resources :posts, only: [:index, :show, :create, :update, :destroy] do
           resources :comments, only: [:index, :create, :update, :destroy] do
             resources :likes, only: [:index, :create, :destroy]
