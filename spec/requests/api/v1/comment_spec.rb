@@ -30,7 +30,7 @@ RSpec.describe 'Comments', type: :request do
         properties: {
           comment: { type: :object, properties: {
             content: { type: :string, example: Faker::Lorem.paragraph }
-          }}
+          } }
         },
         required: %w[comment]
       }
@@ -55,7 +55,7 @@ RSpec.describe 'Comments', type: :request do
         properties: {
           comment: { type: :object, properties: {
             content: { type: :string, example: Faker::Lorem.paragraph }
-          }}
+          } }
         },
         required: %w[comment]
       }

@@ -13,16 +13,16 @@ RSpec.describe 'api/v1/users', type: :request do
             email: { type: :string, example: Faker::Internet.email },
             password: { type: :string, example: '123456' },
             password_confirmation: { type: :string, example: '123456' }
-          }}
+          } }
         },
         required: %w[user]
       }
       response(201, 'successful') do
         let(:user) { { user: FactoryBot.attributes_for(:user) } }
         run_test!
-        end
       end
     end
+  end
 
   path '/api/v1/login' do
     post('login user') do
@@ -34,7 +34,7 @@ RSpec.describe 'api/v1/users', type: :request do
           user: { type: :object, properties: {
             email: { type: :string, example: Faker::Internet.email },
             password: { type: :string, example: '123456' }
-          }}
+          } }
         },
         required: %w[user]
       }
@@ -79,7 +79,7 @@ RSpec.describe 'api/v1/users', type: :request do
             email: { type: :string, example: Faker::Internet.email },
             password: { type: :string, example: '123456' },
             password_confirmation: { type: :string, example: '123456' }
-          }}
+          } }
         },
         required: %w[user]
       }
@@ -105,7 +105,7 @@ RSpec.describe 'api/v1/users', type: :request do
             email: { type: :string, example: Faker::Internet.email },
             password: { type: :string, example: '123456' },
             password_confirmation: { type: :string, example: '123456' }
-          }}
+          } }
         },
         required: %w[user]
       }

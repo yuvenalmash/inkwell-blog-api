@@ -28,7 +28,7 @@ RSpec.describe 'api/v1/posts', type: :request do
             title: { type: :string, example: Faker::Lorem.sentence },
             content: { type: :string, example: Faker::Lorem.paragraph },
             slug: { type: :string, example: Faker::Lorem.sentence },
-          }}
+          } }
         },
         required: %w[post]
       }
@@ -75,14 +75,16 @@ RSpec.describe 'api/v1/posts', type: :request do
             title: { type: :string, example: Faker::Lorem.sentence },
             content: { type: :string, example: Faker::Lorem.paragraph },
             slug: { type: :string, example: Faker::Lorem.sentence },
-          }}
+          } }
         },
         required: %w[post]
       }
       response(205, 'successful') do
         let(:user_id) { @user.id }
         let(:id) { @post.id }
-        let(:post) { { post: { title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph, slug: Faker::Lorem.sentence } } }
+        let(:post) {
+          { post: { title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph, slug: Faker::Lorem.sentence } }
+        }
         run_test!
       end
     end
